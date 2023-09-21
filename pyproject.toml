@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "itmo-ics"
+version = "0.1.0"
+description = ""
+authors = ["Artem <artem00561@gmail.com>"]
+readme = "README.md"
+packages = [{include = "itmo_ics"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+redis = "^5.0.0"
+tortoise-orm = "^0.20.0"
+aiogram-dialog = {version = "^2.0.0", allow-prereleases = true}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
