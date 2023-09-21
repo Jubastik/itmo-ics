@@ -23,6 +23,6 @@ async def handle_start_query(message: Message, dialog_manager: DialogManager):
 async def starting_dispatcher(message: Message, dialog_manager: DialogManager):
     is_registered = await User.is_registered(message.from_user.id)
     if is_registered:
-        await dialog_manager.start(MenuSG.main, mode=StartMode.RESET_STACK)
+        await dialog_manager.start(MenuSG.main, mode=StartMode.RESET_STACK, data={"tg_id": message.from_user.id})
     else:
         await dialog_manager.start(LoginSG.mail, mode=StartMode.RESET_STACK)
