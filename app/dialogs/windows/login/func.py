@@ -21,7 +21,8 @@ async def handle_password(message: Message, message_input: MessageInput, manager
     manager.show_mode = ShowMode.EDIT
     manager.dialog_data["password"] = message.text
     try:
-        token, refresh_token = get_access_token(manager.dialog_data["mail"], manager.dialog_data["password"])
+        token, refresh_token = get_access_token(manager.dialog_data["mail"],
+                                                                manager.dialog_data["password"])
     except ValueError:
         warnings = await message.answer("Неверный логин или пароль 😔\nПопробуйте еще раз")
         asyncio.create_task(del_message_by(warnings, 4))
@@ -29,4 +30,5 @@ async def handle_password(message: Message, message_input: MessageInput, manager
     await User.create_user(message.from_user.id, message.from_user.full_name, message.from_user.username,
                            token, refresh_token)
     await message.delete()
-    await manager.start(MenuSG.main, show_mode=ShowMode.EDIT, mode=StartMode.RESET_STACK)
+    await manager.start(MenuSG.main, show_mode=ShowMode.EDIT, mode=StartMode.RESET_STACK,
+                        data={"tg_id": message.from_user.id})

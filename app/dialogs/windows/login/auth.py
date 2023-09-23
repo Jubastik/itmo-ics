@@ -23,6 +23,22 @@ def get_code_challenge(code_verifier: str):
     return code_challenge.replace('=', '')  # remove base64 padding
 
 
+def refresh_access_token(refresh_token: str):
+    token_resp = requests.post(
+        url=_PROVIDER + "/protocol/openid-connect/token",
+        data=dict(
+            grant_type="refresh_token",
+            client_id=_CLIENT_ID,
+            refresh_token=refresh_token,
+        ),
+        allow_redirects=False,
+    )
+    token_resp.raise_for_status()
+    result = token_resp.json()
+
+    return result["access_token"]
+
+
 def get_access_token(username: str, password: str):
     code_verifier = generate_code_verifier()
     code_challenge = get_code_challenge(code_verifier)

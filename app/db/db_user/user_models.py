@@ -1,6 +1,5 @@
 from tortoise import fields
 from tortoise.models import Model
-from datetime import datetime, timedelta
 
 
 class User(Model):

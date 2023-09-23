@@ -3,12 +3,12 @@ from aiogram_dialog.widgets.kbd import Group, Start, Button
 from aiogram_dialog.widgets.text import Const, Format
 
 from app.dialogs.states import MenuSG
-from app.dialogs.windows.menu.func import getter_menu
+from app.dialogs.windows.menu.func import getter_menu, send_ics
 
 MenuMainWin = Window(
     Format("Привет {name} {sticker}"),
     Group(
-        Button(Format("{not_btn_text}"), on_click=send_ics, id="notifications_btn"),
+        Button(Const("Получить расписание на 2 недели"), on_click=send_ics, id="send_ics_button"),
         width=2,
     ),
     getter=getter_menu,

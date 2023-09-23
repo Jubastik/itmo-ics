@@ -13,4 +13,4 @@ async def getter_menu(dialog_manager: DialogManager, **kwargs):
 
 
 async def send_ics(dialog_manager: DialogManager, **kwargs):
-    pass
+    token = await User.get_jwt()

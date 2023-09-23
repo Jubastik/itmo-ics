@@ -3,7 +3,7 @@ import logging
 import platform
 import coloredlogs
 
-from app.dialogs.router import dlg_router
+from app.dialogs.router import dlg_router, error_handler
 from app.settings import settings
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -69,7 +69,7 @@ async def main():
     dp = Dispatcher(storage=storage)
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
-    # dp.errors.register(error_handler)
+    dp.errors.register(error_handler)
     register_dialogs(dp)
 
     # Registration of routes
