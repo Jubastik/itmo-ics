@@ -3,7 +3,7 @@ from tortoise.models import Model
 
 
 class User(Model):
-    tg_id = fields.IntField(pk=True)
+    tg_id = fields.BigIntField(pk=True)
     name = fields.CharField(max_length=255)
     tg_username = fields.CharField(max_length=255, null=True)
     token = fields.CharField(max_length=2000)
