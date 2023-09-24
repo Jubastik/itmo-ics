@@ -7,7 +7,6 @@ from aiogram_dialog.widgets.text import Const
 from app.dialogs.states import LoginSG
 from app.dialogs.windows.login.func import handle_mail, handle_password
 
-_a = "Привет 👋\n Я бот, который поможет тебе получить расписание из my.itmo.ru в формате iCal."
 HI_TEXT = "🔻Для начала работы введи свой логин от my.itmo.ru🔻"
 
 LoginMailWin = Window(

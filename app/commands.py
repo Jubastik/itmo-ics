@@ -4,7 +4,7 @@ from aiogram.types import BotCommand, BotCommandScopeChat, BotCommandScopeDefaul
 from app.settings import settings
 
 users_commands = {
-    "update": "Меню",
+    "start": "Меню",
 }
 
 owner_commands = {**users_commands, "ping": "Пинг понг"}
