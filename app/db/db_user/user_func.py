@@ -43,5 +43,5 @@ class User(user_models.User):
                 logging.warning(f"Токен пользователя {user.pk} устарел, пользователь удален из БД")
                 raise e
             user.token = jwt["access_token"]
-            user.token_expires = datetime.now() + timedelta(hours=20)
+            user.token_expires = datetime.now() + timedelta(minutes=25)
             return user.token
