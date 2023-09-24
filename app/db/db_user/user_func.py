@@ -24,7 +24,7 @@ class User(user_models.User):
     @classmethod
     async def create_user(cls, tg_id: int, name: str, tg_username: str, token: str, refresh_token: str) -> "User":
         return await cls.create(tg_id=tg_id, name=name, tg_username=tg_username, token=token,
-                                refresh_token=refresh_token, token_expires=datetime.now() + timedelta(hours=20), )
+                                refresh_token=refresh_token, token_expires=datetime.now() + timedelta(minutes=25), )
 
     @classmethod
     async def del_user(cls):
