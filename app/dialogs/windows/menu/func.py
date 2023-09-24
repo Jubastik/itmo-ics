@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from random import choice
 
 from aiogram.types import Message, BufferedInputFile
@@ -19,7 +19,7 @@ async def getter_menu(dialog_manager: DialogManager, **kwargs):
 
 async def send_ics(message: Message, dialog: DialogProtocol, manager: DialogManager):
     token = await User.get_jwt(manager.start_data.get("tg_id"))
-    events = get_raw_events(token, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=14))
+    events = get_raw_events(token, date_start=datetime.now(timezone.utc), date_end=datetime.now(timezone.utc) + timedelta(days=14))
     calendar = raw_events_to_calendar(events)
     tg_cal = BufferedInputFile(bytes("\n".join(map(str.strip, calendar)), encoding='utf8'), filename="schedule.ics")
     await message.message.answer_document(tg_cal,
