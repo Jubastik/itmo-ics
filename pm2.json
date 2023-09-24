@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "RASP_BOT",
+            "cwd": "/home/jubastik/itmo-ics",
+            "script": "poetry run python -m app"
+        }
+    ]
+}
