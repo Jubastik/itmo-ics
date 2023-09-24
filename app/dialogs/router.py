@@ -1,11 +1,10 @@
-import asyncio
 import logging
 
 from aiogram import Router
 from aiogram.dispatcher.event.bases import UNHANDLED
-from aiogram.filters import CommandStart, Command
+from aiogram.filters import CommandStart
 from aiogram.types import Message
-from aiogram_dialog import Dialog, DialogManager, StartMode
+from aiogram_dialog import DialogManager, StartMode
 from aiogram_dialog.api.exceptions import UnknownIntent
 from aiohttp import ClientConnectorError
 from requests import HTTPError

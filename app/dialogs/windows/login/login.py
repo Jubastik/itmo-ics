@@ -1,7 +1,7 @@
 from aiogram.enums import ContentType
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.input import MessageInput
-from aiogram_dialog.widgets.kbd import Group, Back
+from aiogram_dialog.widgets.kbd import Back
 from aiogram_dialog.widgets.text import Const
 
 from app.dialogs.states import LoginSG

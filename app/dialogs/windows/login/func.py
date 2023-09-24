@@ -1,7 +1,7 @@
 import asyncio
 
 from aiogram.types import Message
-from aiogram_dialog import DialogProtocol, DialogManager, ShowMode, StartMode
+from aiogram_dialog import DialogManager, ShowMode, StartMode
 from aiogram_dialog.widgets.input import MessageInput
 
 from app.db.db_user.user_func import User
@@ -22,7 +22,7 @@ async def handle_password(message: Message, message_input: MessageInput, manager
     manager.dialog_data["password"] = message.text
     try:
         token, refresh_token = get_access_token(manager.dialog_data["mail"],
-                                                                manager.dialog_data["password"])
+                                                manager.dialog_data["password"])
     except ValueError:
         warnings = await message.answer("Неверный логин или пароль 😔\nПопробуйте еще раз")
         asyncio.create_task(del_message_by(warnings, 4))

@@ -1,10 +1,8 @@
 import asyncio
 import logging
 import platform
-import coloredlogs
 
-from app.dialogs.router import dlg_router, error_handler
-from app.settings import settings
+import coloredlogs
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.storage.redis import RedisStorage, DefaultKeyBuilder
@@ -15,6 +13,8 @@ from app import db
 from app.commands import setup_bot_commands, remove_bot_commands
 from app.db import init_orm, close_orm
 from app.dialogs.dialogs import register_dialogs
+from app.dialogs.router import dlg_router, error_handler
+from app.settings import settings
 
 
 async def on_startup(dispatcher: Dispatcher, bot: Bot):

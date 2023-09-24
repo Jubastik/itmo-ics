@@ -1,5 +1,5 @@
 from aiogram import Dispatcher
-from aiogram_dialog import Dialog, DialogManager, StartMode
+from aiogram_dialog import Dialog
 
 from app.dialogs.windows.login.login import LoginMailWin, LoginPassWin
 from app.dialogs.windows.menu.menu import MenuMainWin

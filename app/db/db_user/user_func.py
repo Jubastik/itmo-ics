@@ -1,9 +1,6 @@
 import logging
-
-import requests
 from datetime import datetime, timedelta
 
-from aiogram.types import Message
 from requests import HTTPError
 
 from app.db.db_user import user_models

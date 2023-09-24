@@ -1,11 +1,12 @@
+from datetime import datetime, timedelta
 from random import choice
 
 from aiogram.types import Message, BufferedInputFile
 from aiogram_dialog import DialogManager, DialogProtocol
+from aiogram_dialog import ShowMode
+
 from app.db.db_user.user_func import User
 from app.dialogs.windows.menu.my_itmo import get_raw_events, raw_events_to_calendar
-from datetime import datetime, timedelta
-from aiogram_dialog import ShowMode
 
 stickers = ['👍', '👻', '😄', '🧐', '👀', '🌝', '🎫', '🔫', '📌', '📚']
 

@@ -1,5 +1,5 @@
 from aiogram_dialog import Window
-from aiogram_dialog.widgets.kbd import Group, Start, Button
+from aiogram_dialog.widgets.kbd import Group, Button
 from aiogram_dialog.widgets.text import Const, Format
 
 from app.dialogs.states import MenuSG
