@@ -9,6 +9,8 @@ from requests import HTTPError
 from app.db.db_user import user_models
 from app.dialogs.windows.login.auth import refresh_access_token
 
+tzinf = datetime.now().astimezone().tzinfo
+
 
 class User(user_models.User):
     @classmethod
@@ -29,16 +31,17 @@ class User(user_models.User):
         await cls.delete()
 
     @classmethod
-    async def get_jwt(cls, msg: Message) -> str:
-        if cls.token_expires > datetime.now():
-            return await cls.token
+    async def get_jwt(cls, tg_id: int) -> str:
+        user = await cls.get_user(tg_id)
+        if user.token_expires > datetime.now(tz=tzinf):
+            return user.token
         else:
             try:
-                jwt = refresh_access_token(cls.refresh_token)
+                jwt = refresh_access_token(user.refresh_token)
             except HTTPError as e:
-                await cls.del_user()
-                logging.warning(f"Токен пользователя {msg.from_user.id} устарел, пользователь удален из БД")
+                await user.del_user()
+                logging.warning(f"Токен пользователя {user.pk} устарел, пользователь удален из БД")
                 raise e
-            cls.token = jwt["access_token"]
-            cls.token_expires = datetime.now() + timedelta(hours=20)
-            return await cls.token
+            user.token = jwt["access_token"]
+            user.token_expires = datetime.now() + timedelta(hours=20)
+            return user.token

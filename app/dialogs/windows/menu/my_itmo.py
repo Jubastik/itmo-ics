@@ -27,8 +27,8 @@ def get_raw_events(auth_token: str, date_start: datetime, date_end: datetime) ->
     resp = requests.get(
         "https://my.itmo.ru/api/schedule/schedule/personal",
         params=dict(
-            date_start=date_start,
-            date_end=date_end,
+            date_start=date_start.strftime("%Y-%m-%d"),
+            date_end=date_end.strftime("%Y-%m-%d"),
         ),
         headers={"Authorization": f"Bearer {auth_token}"},
     )
