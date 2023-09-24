@@ -49,7 +49,7 @@ def _event_type_to_tag(t: str):
 def _raw_event_to_description(re: dict):
     lines = []
     for key, name in _raw_event_key_names.items():
-        if re[key]:
+        if key in re:
             lines.append(f"{name}: {re[key]}")
 
     _msk_formatted_datetime = (datetime.utcnow() + timedelta(hours=3)).strftime("%Y-%m-%d %H:%M")
@@ -60,12 +60,12 @@ def _raw_event_to_description(re: dict):
 def _raw_event_to_location(re: dict):
     elements = []
     for key in "room", "building":
-        if re[key]:
+        if key in re:
             elements.append(re[key])
 
     result = ", ".join(elements)
 
-    if re["zoom_url"]:
+    if "zoom_url" in re:
         result = f"Zoom / {result}" if result else "Zoom"
 
     return result if result else None
